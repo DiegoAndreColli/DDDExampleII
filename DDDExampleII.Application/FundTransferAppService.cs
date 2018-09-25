@@ -16,6 +16,11 @@ namespace DDDExampleII.Application
             this.fundTransferService = fundTransferService;
         }
 
+        public List<Transfer> ListTransfers()
+        {
+            return this.fundTransferService.ListTransfers();
+        }
+
         public void TransferFund(Transfer transfer)
         {
             throw new NotImplementedException();

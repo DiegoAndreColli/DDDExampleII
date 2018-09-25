@@ -8,5 +8,7 @@ namespace DDDExampleII.Application.Interfaces
     public interface IFundTransferAppService
     {
         void TransferFund(Transfer transfer);
+
+        List<Transfer> ListTransfers();
     }
 }

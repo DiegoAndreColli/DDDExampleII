@@ -24,6 +24,7 @@ namespace DDDExampleII.Presentation.MVC.Controllers
 
         public IActionResult List()
         {
+            ViewData["Transfers"] = service.ListTransfers();
             ViewData["Message"] = "This is the List Page.";
             return View();
         }

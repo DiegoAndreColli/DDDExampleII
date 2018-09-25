@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "List Transfer Page";
 }
+@model DDDExampleII.Domain.Entities.Transfer;
+@*@model IEnumerable<DDDExampleII.Domain.Entities.Transfers>*@
+
 
 <div class="row">
     <div class="col-md-10">
@@ -8,5 +11,16 @@
         Click
         <a asp-area="" asp-controller="FundTransfer" asp-action="List">here</a>
         to test List
+
+        <br />
+        Start
+        <br />
+
+        @foreach (var item in ViewData["Transfers"] as IEnumerable<DDDExampleII.Domain.Entities.Transfer>)
+        {
+            @Html{@item.Id <br>};
+
+        }
+
     </div>
 </div>

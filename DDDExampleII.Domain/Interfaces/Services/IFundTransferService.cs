@@ -9,5 +9,6 @@ namespace DDDExampleII.Domain.Interfaces.Services
     public interface IFundTransferService
     {
         bool TransferFund(Transfer transfer);
+        List<Transfer> ListTransfers();
     }
 }
