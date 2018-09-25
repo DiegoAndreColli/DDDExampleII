@@ -6,8 +6,9 @@ namespace DDDExampleII.Domain.Entities
 {
     public class Transfer
     {
-        public Entity From { get; set; }
+        public int Id { get; set; }
+        public virtual Entity From { get; set; }
         public Decimal Value {get; set;}
-        public Entity To { get; set; }
+        public virtual Entity To { get; set; }
     }
 }

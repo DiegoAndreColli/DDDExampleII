@@ -6,7 +6,8 @@ namespace DDDExampleII.Domain.Entities
 {
     public class Entity
     {
+        public int Id { get; set; }
         public String Name { get; set; }
-        public Account Account { get; set;}
+        public virtual Account Account { get; set;}
     }
 }
