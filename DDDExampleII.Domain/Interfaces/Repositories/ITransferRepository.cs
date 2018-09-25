@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DDDExampleII.Domain.Interfaces.Repositories
 {
-    interface ITransferRepository : IBaseRepository<Transfer>
+    public interface ITransferRepository : IBaseRepository<Transfer>
     {
     }
 }

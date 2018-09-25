@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DDDExampleII.Domain.Interfaces.Repositories
 {
-    interface IBookRepository : IBaseRepository<Book>
+    public interface IBookRepository : IBaseRepository<Book>
     {
     }
 }
