@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DDDExampleII.Domain.Interfaces.Services
 {
-    interface IFundTransferService
+    public interface IFundTransferService
     {
         bool TransferFund(Transfer transfer);
     }

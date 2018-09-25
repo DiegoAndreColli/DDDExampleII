@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DDDExampleII.Application.Interfaces
 {
-    interface IFundTransferAppService
+    public interface IFundTransferAppService
     {
         void TransferFund(Transfer transfer);
     }

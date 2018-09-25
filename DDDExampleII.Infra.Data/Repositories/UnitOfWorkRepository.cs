@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DDDExampleII.Infra.Data.Repositories
 {
-    class UnitOfWorkRepository : IUnitOfWorkRepository
+    public class UnitOfWorkRepository : IUnitOfWorkRepository
     {
         private bool disposed;
         private readonly DDDExampleIIContext context;

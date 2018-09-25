@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DDDExampleII.Application
 {
-    class FundTransferAppService : IFundTransferAppService
+    public class FundTransferAppService : IFundTransferAppService
     {
         private readonly IFundTransferAppService fundTransferAppService;
 
