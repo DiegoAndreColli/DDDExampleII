@@ -9,14 +9,11 @@ namespace DDDExampleII.Domain.Services
 {
     public class FundTransferService : IFundTransferService
     {
-        //private readonly IAccountRepository accountRepository;
-        //private readonly IBookRepository bookRepository;
-        //private readonly IEntityRepository entityRepository;
-        private readonly ITransferRepository transferRepository;
+        private readonly IUnitOfWorkRepository UoWRepository;
 
-        public FundTransferService(ITransferRepository transferRepository)
+        public FundTransferService(IUnitOfWorkRepository unitOfWorkRepository)
         {
-            this.transferRepository = transferRepository;
+            UoWRepository = unitOfWorkRepository;
         }
 
         public bool TransferFund(Transfer transfer)
