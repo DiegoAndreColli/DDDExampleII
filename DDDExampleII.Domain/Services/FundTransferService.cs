@@ -33,7 +33,7 @@ namespace DDDExampleII.Domain.Services
             if (transfer.HasAccountEnoughFunds())
             {
                 transfer.UpdateEntitiesAccountBalance();
-                SaveTransferFund(transfer);
+                return SaveTransferFund(transfer);
             }
             return false;            
         }
@@ -49,7 +49,7 @@ namespace DDDExampleII.Domain.Services
             UoWRepository.AccountRepository.Update(transfer.From.Account);
             UoWRepository.TransferRepository.Add(transfer);
             UoWRepository.AccountRepository.Update(transfer.To.Account);
-            return UoWRepository.Commit() > 0 ? true : false;
+            return UoWRepository.SaveChanges() > 0 ? true : false;
         }
     }
 }

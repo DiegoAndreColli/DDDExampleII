@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DDDExampleII.Domain.Interfaces.Repositories
 {
@@ -15,6 +16,8 @@ namespace DDDExampleII.Domain.Interfaces.Repositories
 
         IAccountRepository AccountRepository { get; }
 
-        int Commit();
+        int SaveChanges();
+
+        IContextTransaction BeginTransaction();        
     }
 }

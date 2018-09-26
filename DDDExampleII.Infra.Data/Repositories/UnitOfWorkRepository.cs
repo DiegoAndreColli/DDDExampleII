@@ -1,9 +1,11 @@
 ﻿using DDDExampleII.Domain.Entities;
 using DDDExampleII.Domain.Interfaces.Repositories;
 using DDDExampleII.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DDDExampleII.Infra.Data.Repositories
 {
@@ -69,11 +71,17 @@ namespace DDDExampleII.Infra.Data.Repositories
             }
         }
 
-        public int Commit()
+        public int SaveChanges()
         {
             return context.SaveChanges();
         }
 
+        //seems like Transactions already exists https://stackoverflow.com/a/25004973/4482337 , so
+        public IContextTransaction BeginTransaction()
+        {
+            return new ContextTransactionRepository(context.Database.BeginTransaction());
+        }
+        
         protected virtual void Dispose(bool disposing)
         {
             if (!disposed)
