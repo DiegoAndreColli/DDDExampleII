@@ -10,5 +10,6 @@ namespace DDDExampleII.Domain.Interfaces.Services
     {
         bool TransferFund(Transfer transfer);
         List<Transfer> ListTransfers();
+        List<Entity> ListEntities();
     }
 }

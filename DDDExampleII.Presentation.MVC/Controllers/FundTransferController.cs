@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DDDExampleII.Application.Interfaces;
+using DDDExampleII.Domain.Entities;
+using DDDExampleII.Presentation.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DDDExampleII.Presentation.MVC.Controllers
@@ -18,16 +20,27 @@ namespace DDDExampleII.Presentation.MVC.Controllers
 
         public IActionResult Index()
         {
-            ViewData["Message"] = "This is the example Page.";
-            return View();
+            var view = new FundTransferView();
+            view.Entities = service.ListEntities();
+            view.Transfer = new Transfer { Value = 100};
+            
+            ViewData["Message"] = "This is the example Fund Transfer Page.";
+            return View(view);
         }
 
         public IActionResult List()
         {
             ViewData["Transfers"] = service.ListTransfers();
-            ViewData["Message"] = "This is the List Page.";
             return View();
         }
 
+
+        public IActionResult TransferFund(Transfer transfer)
+        {
+            service.TransferFund(transfer);
+            ViewData["Transfers"] = service.ListTransfers();
+            return View("List");
+
+        }
     }
 }

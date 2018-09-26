@@ -17,15 +17,39 @@ namespace DDDExampleII.Domain.Services
             UoWRepository = unitOfWorkRepository;
         }
 
+        public List<Entity> ListEntities()
+        {
+            return UoWRepository.EntityRepository.GetAll().ToList();
+        }
+
         public List<Transfer> ListTransfers()
         {
             return UoWRepository.TransferRepository.GetAll().ToList();
-
         }
 
         public bool TransferFund(Transfer transfer)
         {
-            throw new NotImplementedException();
+            FindEntitiesToTransferFund(transfer);
+            if (transfer.HasAccountEnoughFunds())
+            {
+                transfer.UpdateEntitiesAccountBalance();
+                SaveTransferFund(transfer);
+            }
+            return false;            
+        }
+        
+        private void FindEntitiesToTransferFund(Transfer transfer)
+        {
+            transfer.To = UoWRepository.EntityRepository.GetById(transfer.To.Id);
+            transfer.From = UoWRepository.EntityRepository.GetById(transfer.From.Id);
+        }
+
+        private bool SaveTransferFund(Transfer transfer)
+        {
+            UoWRepository.AccountRepository.Update(transfer.From.Account);
+            UoWRepository.TransferRepository.Add(transfer);
+            UoWRepository.AccountRepository.Update(transfer.To.Account);
+            return UoWRepository.Commit() > 0 ? true : false;
         }
     }
 }

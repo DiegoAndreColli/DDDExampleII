@@ -16,14 +16,19 @@ namespace DDDExampleII.Application
             this.fundTransferService = fundTransferService;
         }
 
-        public List<Transfer> ListTransfers()
+        public List<Entity> ListEntities()
         {
-            return this.fundTransferService.ListTransfers();
+            return fundTransferService.ListEntities();
         }
 
-        public void TransferFund(Transfer transfer)
+        public List<Transfer> ListTransfers()
         {
-            throw new NotImplementedException();
+            return fundTransferService.ListTransfers();
+        }
+
+        public bool TransferFund(Transfer transfer)
+        {
+            return fundTransferService.TransferFund(transfer);
         }
     }
 }

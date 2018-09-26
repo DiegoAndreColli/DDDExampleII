@@ -2,11 +2,61 @@
     ViewData["Title"] = "Fund Transfer Page";
 }
 
+@model DDDExampleII.Presentation.MVC.Models.FundTransferView
+
 <div class="row">
     <div class="col-md-10">
         <h2>Fund Transfer Page</h2>
-        Click
-        <a asp-area="" asp-controller="FundTransfer" asp-action="List">here</a>
-        to test List
+
+
+        @using (Html.BeginForm("TransferFund", "FundTransfer", FormMethod.Post))
+        {
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th colspan="2" align="center">Person Details</th>
+                </tr>
+                <tr>
+                    <td> From Entity: </td>
+                    <td>
+                        <select name="Transfer.From.Id" id="Transfer_From_Id">
+                            @foreach (var item in Model.Entities)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Value: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Transfer.Value)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>To Entity: </td>
+                    <td>
+                        <select name="Transfer.To.Id" id="Transfer_To_Id">
+                            @foreach (var item in Model.Entities)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Submit" /></td>
+                </tr>
+            </table>
+        }
+
+
+        <h4>
+            Click
+            <a asp-controller="FundTransfer" asp-action="List">here</a>
+            to see the fund transfer list
+        </h4>
     </div>
 </div>

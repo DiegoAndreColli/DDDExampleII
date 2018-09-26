@@ -2,8 +2,6 @@
     ViewData["Title"] = "List Transfer Page";
 }
 @model DDDExampleII.Domain.Entities.Transfer;
-@*@model IEnumerable<DDDExampleII.Domain.Entities.Transfers>*@
-
 
 <div class="row">
     <div class="col-md-10">
@@ -18,7 +16,15 @@
 
         @foreach (var item in ViewData["Transfers"] as IEnumerable<DDDExampleII.Domain.Entities.Transfer>)
         {
-            @Html{@item.Id <br>};
+            <span>Transaction</span>
+            @item.Id;
+            <span> | From:</span>
+            @item.From.Name;
+            <span> | to:</span>
+            @item.To.Name;
+            <span>| Value: </span>
+            @item.Value;
+            <br>
 
         }
 
